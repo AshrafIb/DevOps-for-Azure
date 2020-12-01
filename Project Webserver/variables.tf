@@ -13,7 +13,7 @@ variable "location" {
 }
 
 variable "admin" {
-	description= "Add your Admin Name"
+  description= "Add your Admin Name"
 }
 
 variable "password"{
@@ -23,12 +23,12 @@ variable "password"{
 variable "vmnumber" {
   type        = number
   default     = 2
-  description = "The Number of virtual Machines"
+  description = "The Number of virtual Machines - allowed from 2 to 5"
 
   # define regex condition for validation
   validation {
     condition     = can(regex("2|3|4|5", var.vmnumber))
-    error_message = "The number of virtual machines must be between 2 and 5; please correct your Input" 
+    error_message = "The number of virtual machines must be between 2 and 5; please correct your Input!" 
 
   } 
 
