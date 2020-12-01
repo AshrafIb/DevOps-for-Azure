@@ -15,7 +15,7 @@ For this project, I wrote a Packer template and a Terraform template to deploy a
 1. Create an [Azure Account](https://portal.azure.com/)
 2. Install the [Azure command line interface](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)
 3. Install [Packer](https://www.packer.io/downloads) (add to Path. Vars)
-4. Install [Terraform](https://www.terraform.io/downloads.html) (add to Path. Vars)
+4. Install [Terraform](https://www.terraform.io/downloads.html) (add to Path. Vars) and run terraform init in command line.
 
 ### Instructions
 
@@ -27,9 +27,9 @@ After installing Azure, Packer and Terraform, download all elements from this re
 
 First, look in your **Azure-Portal**, in the **Segment Images**, for the location of the image you just created.  Copy the value and paste it into the **variables.tf** file under default. This ensures that this image is also used to create the server.   
 
-Use a command line to navigate to your folder containing your terraform data (main.tf and variables.tf) and plan the infrastructure with **terraform plan -out yourplannamehere.plan**. Terraform asks for the **user name for Azure**, the **password**, the **location of the server**, and the **number of virtual machines**. The number of virtual machines is kept flexible, so that you can choose from $1$ to $\infty$.  
+Use a command line to navigate to your folder containing your terraform data (main.tf and variables.tf) and plan the infrastructure with **terraform plan -out yourplannamehere.plan**. Terraform asks for the **user name for Azure**, the **password**, the **location of the server**, and the **number of virtual machines**. The number of virtual machines is kept flexible, so that you can choose from $2$ to $5$. To Check if the user Input is correct, i have implemented a regex-check based on the [terraform template](https://www.terraform.io/docs/configuration/expressions.html), which produces an error, if the value is below 2 and above 5. The **Default**-values for the Server **location** is **West Europe**. 
 
-You will also be asked for a **project name**, which is used as a prefix for the naming of central resources.  Apart from that, this is a Prefix of all assigned tags. 
+You can also choose a **project name**, which is used as a prefix for the naming of central resources.  Apart from that, this is a Prefix of all assigned tags. The **Default** value herby is **Udacity**. 
 
 After your plan was generated, you can deploy your server using **terraform apply yourplannamehere.plan**. This might take a while and after its done, you can check your azure portal for your deployed infrastructure. 
 
