@@ -1,0 +1,67 @@
+{
+ "metadata": {
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.0-final"
+  },
+  "orig_nbformat": 2,
+  "kernelspec": {
+   "name": "python3",
+   "display_name": "Python 3",
+   "language": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2,
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "stream",
+     "name": "stderr",
+     "text": [
+      "Error: no such option: --ip\n"
+     ]
+    },
+    {
+     "output_type": "error",
+     "ename": "SystemExit",
+     "evalue": "2",
+     "traceback": [
+      "An exception has occurred, use %tb to see the full traceback.\n",
+      "\u001b[0;31mSystemExit\u001b[0m\u001b[0;31m:\u001b[0m 2\n"
+     ]
+    }
+   ],
+   "source": [
+    "import click \n",
+    "\n",
+    "@click.command(help='This is just a hello app. Id does Nothing')\n",
+    "@click.option(\"--name\",prompt=\"In need your name\", help='Need Name')\n",
+    "@click.option(\"--color\",prompt=\"I need your color\", help=\"This is your color\")\n",
+    "\n",
+    "def hello(name, color):\n",
+    "    if name==\"Thor\":\n",
+    "        click.echo(\"Thor your are always red\")\n",
+    "        click.echo(click.style(\"Hello World!{}\".format(name), fg='red'))\n",
+    "    else:\n",
+    "        click.echo(\"{}, your color is {}\".format(name,color))\n",
+    "        click.echo(click.style(\"Hello {}\".format(name),fg=color))\n",
+    "        \n",
+    "if __name__ == '__main__':\n",
+    "    hello()"
+   ]
+  }
+ ]
+}
